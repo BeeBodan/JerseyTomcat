@@ -1,6 +1,6 @@
 package com.bogdan.api;
 
-import com.bogdan.UserDao;
+import com.bogdan.dao.UserDao;
 import com.bogdan.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,11 +23,12 @@ public class UserApi {
 
         return Response
                 .status(Response.Status.OK)
-                .entity(result)
+                .entity("List users: " + result)
                 .build();
     }
 
     @POST
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response createNewUser(@FormParam("id") int id, @FormParam("name") String name, @FormParam("age") int age) {
         User newUser = new User(id, name, age);
@@ -42,28 +43,30 @@ public class UserApi {
     @GET
     @Path("/{id}")
     public Response getUserById(@PathParam("id") int id) {
-        String result = null;
+        String result;
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             result = gson.toJson(UserDao.getInstance().getUser(id));
             if (result == null) {
                 return Response
                         .status(Response.Status.NOT_FOUND)
-                        .entity("There is no user with id: " + id)
+                        .entity("There is no user with id '" + id + "'.")
                         .build();
             }
         } catch (Exception e) {
             return Response
-                    .status(Response.Status.BAD_REQUEST)
+                    .status(405)
+                    .entity("You entered something wrong!")
                     .build();
         }
         return Response
                 .status(Response.Status.OK)
-                .entity(result)
+                .entity("User with id '" + id + "': " + result)
                 .build();
     }
 
     @PUT
+    @Path("/update")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response updateUser(@FormParam("id") int id, @FormParam("name") String name, @FormParam("age") int age) {
         try {
@@ -72,40 +75,42 @@ public class UserApi {
             if (UserDao.getInstance().updateUser(upUser)) {
                 return Response
                         .status(Response.Status.OK)
-                        .entity("User id: " + upUser.getId() + " update!")
+                        .entity("User with id '" + id + "' update:" + getUserById(id))
                         .build();
             } else {
                 return Response
                         .status(Response.Status.NOT_FOUND)
-                        .entity("There is no user with id: " + id)
+                        .entity("There is no user with id '" + id + "'.")
                         .build();
             }
         } catch (Exception e) {
             return Response
-                    .status(Response.Status.BAD_REQUEST)
+                    .status(405)
+                    .entity("You entered something wrong!")
                     .build();
         }
     }
 
 
     @DELETE
-    @Path("/{name}")
+    @Path("/delete/{name}")
     public Response delete(@PathParam("name") String name) {
         try {
             if (UserDao.getInstance().deleteUser(name)) {
                 return Response
                         .status(Response.Status.OK)
-                        .entity("User" + name + " deleted!")
+                        .entity("User " + name + " deleted!")
                         .build();
             } else {
                 return Response
                         .status(Response.Status.NOT_FOUND)
-                        .entity("User" + name + " not founded!")
+                        .entity("User " + name + " not founded!")
                         .build();
             }
         } catch (Exception e) {
             return Response
-                    .status(Response.Status.BAD_REQUEST)
+                    .status(405)
+                    .entity("You entered something wrong!")
                     .build();
         }
     }

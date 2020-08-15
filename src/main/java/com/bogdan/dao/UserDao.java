@@ -1,4 +1,4 @@
-package com.bogdan;
+package com.bogdan.dao;
 
 import com.bogdan.model.User;
 
