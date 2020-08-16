@@ -25,33 +25,33 @@ Create an API to work with the User class (int id, String name, int age). Implem
 
 **1.** Adding a new user to the list:
 
-[gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/add.gif)
+![gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/add.gif)
 
 ---
 
 **2.** Displaying all users per request **http://localhost:8081/TomcatProject/**. 
 Result:
 
-[screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_1.jpg)
+![screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_1.jpg)
 
 ---
 
 **3.** Display user by a specific id **http://localhost:8081/TomcatProject/3**:
 
-[screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_2.jpg)
+![screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_2.jpg)
 
 and **http://localhost:8081/TomcatProject/1**:
 
-[screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_3.jpg)
+![screenshot](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/Screenshot_3.jpg)
 
 ---
 
 **4.** Delete user by name:
 
-[gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/delete.gif)
+![gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/delete.gif)
 
 ---
 
 **5.** Update user by id:
 
-[gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/update.gif)
+![gif](https://github.com/bbogdasha/jerseyTomcat/blob/master/gif/update.gif)
