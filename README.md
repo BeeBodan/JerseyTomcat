@@ -1,18 +1,26 @@
-# JerseyTomcat
-User api (Jersey Tomcat)
+# User API - Tomcat + Jersey + Postman
+
+This application implements a REST architecture based on web standards and using the HTTP protocol. The following four HTTP methods are implemented: GET, PUT, DELETE, POST. Used Jersey Framework to build RESTful web services.
+
+### Tech
+
+* Tomcat;
+* Jersey;
+* Postman:
+* JSON.
+
+### Task
+
+Create an API to work with the User class (int id, String name, int age). Implement REST methods (GET, PUT, DELETE, POST). Each method must return a return code and response in JSON format with an enumeration of the result. For example, if the DELETE request was successful, then the return code will be 200 and the corresponding message, and if there was an attempt to delete the user who does not exist, then return the code 400 and the corresponding text.
+
+### Functions
+
+**POST:** create a new user. Send to the server in x-www-form-urlencoded format. The server should return JSON with the created user;
+**PUT:** change user by id;
+**DELETE:** delete user by name;
+**GET:** get user by id;
+**GET:** get all users.
+
+### Result
 
 
-Создать API для работы с классом User (int id, String name, int age):
-
-POST: создать нового юзера. Передать на сервер в формате x-www-form-urlencoded name и age. Сервер должен вернуть JSON с созданным юзером у которого присвоен id.
-PUT: изменить юзера по id
-DELETE: удалить
-GET: получить юзера по id
-GET: получить всех юзеров
-
-
-Каждый метод должен возвращать код возврата и ответ в формате JSON с обьянением результата. Непример если DELETE запрос прошел успешно, то код возврата будет 200 и соотв. сообщение а если была попытка удалить юзера которого нет, то вернуть код 400 и сооттв. текст.
-
-
-
-На сервер хранить users в любом удобном виде - просто в памяти или в БД.
